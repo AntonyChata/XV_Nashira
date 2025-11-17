@@ -312,7 +312,42 @@
   max-height:92vh;
   width:auto;
 }
+.special15{
+  margin-top:-20px;
+  margin-bottom:8px;
+  text-align:center;
+  position:relative;
+}
 
+.number15{
+  font-family:'Playfair Display', serif;
+  font-size:82px;
+  font-weight:700;
+  display:inline-block;
+  background:linear-gradient(45deg, #f7e7a3, #d9a84d, #f5d67b, #b8892e);
+  background-size:200% 200%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation: goldShine 3s infinite linear;
+  text-shadow:0 2px 6px rgba(0,0,0,0.18);
+}
+
+@keyframes goldShine {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.crown15{
+  width:48px;
+  position:absolute;
+  top:10px;
+  right:50%;
+  transform:translateX(34%);
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,0.18));
+}
+  text-shadow:0 1px 2px rgba(255,255,255,0.7);
+}
 
   </style>
 </head>
@@ -334,7 +369,13 @@
 
         <div style="width:100%">
           <div class="name" id="nameText">Nashira Lucero Chata Choque</div>
-          <div class="tagline">Mis XV Años</div>
+<div class="special15">
+  <span class="number15">15</span>
+  <svg class="crown15" viewBox="0 0 64 32">
+    <path d="M4 28c6-6 12-6 20-6s14 0 20 6" fill="none" stroke="#e6c45b" stroke-width="2" stroke-linecap="round"/>
+    <path d="M10 16l6 6 6-12 6 12 6-8 4 10" fill="none" stroke="#e6c45b" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
           <div style="font-size:12px;color:var(--muted);max-width:86%;margin:8px auto;text-align:center;">
             “Hoy dejo atrás mi niñez para abrir las puertas de un nuevo sueño. Gracias por acompañarme en este mágico comienzo.”
           </div>
