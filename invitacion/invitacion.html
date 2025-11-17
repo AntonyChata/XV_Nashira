@@ -294,11 +294,34 @@
 .music-heart:hover{
   transform:translateY(-1px);
 }
+/* Imagen portada que cubre la invitación */
+.cover-image{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:rgba(255,255,255,0.95);
+  z-index:999;   /* por encima de la invitación */
+}
+
+.cover-image img{
+  max-height:92vh;
+  width:auto;
+}
 
 
   </style>
 </head>
 <body>
+<!-- PORTADA ENCIMA DE LA INVITACIÓN -->
+<div class="cover-image" id="coverImage">
+  <img src="videofondo.png" alt="Portada Quinceaños">
+</div>
+
   <div class="stage" role="main" aria-label="Invitación de quince años - Nashira">
     <div class="canvas" id="canvas">
 
@@ -313,23 +336,48 @@
           <div class="name" id="nameText">Nashira Lucero Chata Choque</div>
           <div class="tagline">Mis XV Años</div>
           <div style="font-size:12px;color:var(--muted);max-width:86%;margin:8px auto;text-align:center;">
-            "Desea con el corazón, trabaja con constancia y la magia hará el resto."
+            “Hoy dejo atrás mi niñez para abrir las puertas de un nuevo sueño. Gracias por acompañarme en este mágico comienzo.”
           </div>
         </div>
       </div>
 
     <!-- Padres -->
 <div class="card" id="cardParents" aria-label="Padres">
-  <div class="muted">Con la bendición de mis papás</div>
+  <div class="muted">Con la bendición de mis papás</div> <br>
 
   <!-- Nombres mejorados -->
-  <div class="parents-name">Isaias Chata &amp; Lourdes Choque</div>
+  <div class="parents-name">Isaias Chata<br> Y <br> Lourdes Choque</div>
 
   <div class="muted" style="margin-top:8px">
     Se complacen en invitarte a una noche muy especial en mi honor.
   </div>
 </div>
+      <!-- REPRODUCTOR DE MÚSICA -->
+<div class="music-wrapper">
+  <div class="music-title">
+    <span class="music-line"></span>
+    <span class="music-text">Tocar el corazón para escuchar la hermosa canción.</span>
+    <span class="music-line"></span>
+  </div>
 
+  <div class="music-slider" id="musicBar">
+    <div class="music-slider-fill" id="musicProgress"></div>
+    <div class="music-slider-thumb" id="musicThumb"></div>
+  </div>
+
+  <div class="music-controls">
+    <button class="music-icon" id="btnPrev" title="Reiniciar">⏮</button>
+
+    <button class="music-heart" id="btnHeart" title="Reproducir / Pausar">
+      <span>♡</span>
+    </button>
+
+    <button class="music-icon" id="btnNext" title="Reiniciar">⏭</button>
+  </div>
+
+  <!-- Audio -->
+  <audio id="bg-music" src="Ma Belle Evangeline.mp3" preload="auto"></audio>
+</div>
 
       <!-- Información -->
       <div class="info-grid" id="infoGrid" role="group" aria-label="Información del evento">
@@ -350,7 +398,7 @@
     <img src="ubicacion3.png" alt="Ubicación" />
   </div>
   <div class="info-text">
-    <strong class="heading-strong">Salón de Eventos Villa Los Próceres</strong><br>
+    <strong class="heading-strong">Local Villa Los Próceres</strong><br>
     <span style="font-size:13px;color:var(--muted)">Mz 60 Lt 25 (Puerta 1)</span>
   </div>
 </div>
@@ -367,7 +415,6 @@
     </span>
   </div>
 </div>
-
 
         <!-- Confirmación + Ubicación -->
         <div class="info-item card" id="cardActions" style="flex-direction:column;gap:10px;align-items:center">
@@ -422,6 +469,8 @@
       </div>
 
       <div class="footer" aria-hidden>✨ ¡Te espero! ✨</div>
+
+
     </div>
   </div>
 
@@ -490,34 +539,6 @@
 
 
 
-<!-- REPRODUCTOR DE MÚSICA -->
-<div class="music-wrapper">
-  <div class="music-title">
-    <span class="music-line"></span>
-    <span class="music-text">Tocar el corazón para escuchar la hermosa canción.</span>
-    <span class="music-line"></span>
-  </div>
-
-  <div class="music-slider" id="musicBar">
-    <div class="music-slider-fill" id="musicProgress"></div>
-    <div class="music-slider-thumb" id="musicThumb"></div>
-  </div>
-
-  <div class="music-controls">
-    <button class="music-icon" id="btnShuffle" title="Aleatorio">🔀</button>
-    <button class="music-icon" id="btnPrev" title="Reiniciar">⏮</button>
-
-    <button class="music-heart" id="btnHeart" title="Reproducir / Pausar">
-      <span>♡</span>
-    </button>
-
-    <button class="music-icon" id="btnNext" title="Reiniciar">⏭</button>
-    <button class="music-icon" id="btnRepeat" title="Repetir">🔁</button>
-  </div>
-
-  <!-- Audio -->
-  <audio id="bg-music" src="Ma Belle Evangeline.mp3" preload="auto"></audio>
-</div>
 
 
 
@@ -605,6 +626,14 @@
   })();
 </script>
 
+<script>
+  const cover = document.getElementById("coverImage");
+  cover.addEventListener("click", () => {
+    cover.style.opacity = "0";
+    cover.style.pointerEvents = "none";
+    cover.style.transition = "opacity .8s ease";
+  });
+</script>
 
 
 </body>
